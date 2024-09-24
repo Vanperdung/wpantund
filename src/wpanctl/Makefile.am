@@ -116,6 +116,8 @@ wpanctl_SOURCES = \
 	tool-cmd-remove-service.h \
 	tool-cmd-remove-service.c \
 	tool-updateprop.h \
+	tool-cmd-request-sleep.h \
+	tool-cmd-request-sleep.c \
 	$(NULL)
 
 wpanctl_LDADD = \
