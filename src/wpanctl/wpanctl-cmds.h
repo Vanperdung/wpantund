@@ -56,6 +56,7 @@
 #include "tool-cmd-remove-service.h"
 #include "tool-cmd-mlr.h"
 #include "tool-cmd-bbr.h"
+#include "tool-cmd-request-sleep.h"
 
 #include "wpanctl-utils.h"
 
@@ -247,6 +248,10 @@
 		&tool_cmd_dataset \
 	}, \
 	{ "cd",   "Change current interface (command mode)", \
-	  &tool_cmd_cd                                            }
+	  &tool_cmd_cd                                            }, \
+	{ \
+		"request-sleep", \
+		"Send request-sleep to another device", \
+		&tool_cmd_request_sleep }
 
 #endif
