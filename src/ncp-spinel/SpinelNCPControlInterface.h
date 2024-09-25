@@ -298,6 +298,10 @@ public:
 		CallbackWithStatus cb = NilReturn()
 	);
 
+	virtual void request_sleep(
+		CallbackWithStatus cb = NilReturn()
+	);
+
 	/******************* NCPMfgInterface_v1 ********************/
 	virtual void mfg(
 		const std::string& mfg_command,

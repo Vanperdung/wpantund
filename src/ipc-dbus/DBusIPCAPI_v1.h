@@ -311,6 +311,11 @@ private:
 		DBusMessage *        message
 	);
 
+	DBusHandlerResult interface_request_sleep_handler(
+		NCPControlInterface* interface,
+		DBusMessage *        message
+	);
+
 private:
 	typedef DBusHandlerResult (interface_handler_cb)(
 		NCPControlInterface*,

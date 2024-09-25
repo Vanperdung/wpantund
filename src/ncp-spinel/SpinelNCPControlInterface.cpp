@@ -1147,6 +1147,12 @@ SpinelNCPControlInterface::pcap_terminate(CallbackWithStatus cb)
 	cb(kWPANTUNDStatus_Ok);
 }
 
+void SpinelNCPControlInterface::request_sleep(
+		CallbackWithStatus cb)
+{
+	cb(kWPANTUNDStatus_Ok);
+}
+
 // ----------------------------------------------------------------------------
 // MARK: -
 

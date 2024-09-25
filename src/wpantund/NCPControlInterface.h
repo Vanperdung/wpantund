@@ -436,6 +436,11 @@ public:
 	) = 0;
 
 public:
+	virtual void request_sleep(
+		CallbackWithStatus cb = NilReturn()
+	) = 0;
+
+public:
 	// ========================================================================
 	// Convenience methods
 

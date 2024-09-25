@@ -296,6 +296,10 @@ public:
 		CallbackWithStatus cb = NilReturn()
 	);
 
+	virtual void request_sleep(
+		CallbackWithStatus cb = NilReturn()
+	);
+
 	virtual void mfg(
 		const std::string& mfg_command,
 		CallbackWithStatusArg1 cb = NilReturn()

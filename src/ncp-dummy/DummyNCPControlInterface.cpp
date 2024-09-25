@@ -468,3 +468,10 @@ DummyNCPControlInterface::poke(uint32_t address, Data bytes, CallbackWithStatus 
 {
 	cb(kWPANTUNDStatus_FeatureNotImplemented);
 }
+
+void
+DummyNCPControlInterface::request_sleep(CallbackWithStatus cb)
+{
+	// TODO: Writeme!
+	cb(kWPANTUNDStatus_FeatureNotImplemented);
+}

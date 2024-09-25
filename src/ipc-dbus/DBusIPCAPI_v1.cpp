@@ -45,6 +45,8 @@
 #include "DBUSHelpers.h"
 #include "any-to.h"
 
+#include "../dbg.h"
+
 using namespace DBUSHelpers;
 using namespace nl;
 using namespace nl::wpantund;
@@ -127,6 +129,8 @@ DBusIPCAPI_v1::init_callback_tables()
 	INTERFACE_CALLBACK_CONNECT(WPANTUND_IF_CMD_MLR_REQUEST, interface_mlr_request_handler);
 
 	INTERFACE_CALLBACK_CONNECT(WPANTUND_IF_CMD_BACKBONE_ROUTER_CONFIG, interface_backbone_router_config_handler);
+
+	INTERFACE_CALLBACK_CONNECT(WPANTUND_IF_CMD_REQUEST_SLEEP, interface_request_sleep_handler);
 }
 
 static void
@@ -2364,6 +2368,25 @@ bail:
 }
 
 DBusHandlerResult
+DBusIPCAPI_v1::interface_request_sleep_handler(
+	NCPControlInterface* interface,
+	DBusMessage *        message) 
+{
+	DBusHandlerResult ret = DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
+	
+	dbus_message_ref(message);
+
+	interface->request_sleep(
+		boost::bind(&DBusIPCAPI_v1::CallbackWithStatus_Helper, this, _1, message)
+	);
+
+	ret = DBUS_HANDLER_RESULT_HANDLED;
+
+bail:
+	return ret;
+}
+
+DBusHandlerResult
 DBusIPCAPI_v1::message_handler(
     NCPControlInterface* interface,
     DBusConnection *        connection,
@@ -2371,6 +2394,8 @@ DBusIPCAPI_v1::message_handler(
     )
 {
 	DBusHandlerResult ret = DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
+
+	dbg(dbus_message_get_member(message));
 
 	if ((dbus_message_get_type(message) == DBUS_MESSAGE_TYPE_METHOD_CALL)
 		&& (dbus_message_has_interface(message, WPANTUND_DBUS_APIv1_INTERFACE)
