@@ -108,6 +108,8 @@
 
 #define WPANTUND_IF_CMD_BACKBONE_ROUTER_CONFIG "BackboneRouterConfig"
 
+#define WPANTUND_IF_CMD_REQUEST_SLEEP           "RequestSleep"
+
 // ============================================================================
 // NestLabs Internal API Interface
 
